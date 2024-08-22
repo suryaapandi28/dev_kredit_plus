@@ -17,9 +17,9 @@ type Config struct {
 	SMTP     SMTPConfig     `envPrefix:"SMTP_"`
 }
 type SMTPConfig struct {
-	Host     string `env:"HOST" envDefault:"smtp.larksuite.com"`
+	Host     string `env:"HOST" envDefault:"mail.smartlms.my.id"`
 	Port     string `env:"PORT" envDefault:"587"`
-	Password string `env:"PASSWORD" envDefault:"psE2O3OoYa1OUhA4"`
+	Password string `env:"PASSWORD" envDefault:"kreditplus123"`
 }
 
 type PostgresConfig struct {

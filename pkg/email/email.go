@@ -17,7 +17,7 @@ func NewEmailSender(config *entity.Config) *EmailSender {
 }
 
 func (e *EmailSender) SendEmail(to []string, subject, body string) error {
-	from := "info@amygdala.cloud"
+	from := "kreditplus@smartlms.my.id"
 	password := e.Config.SMTP.Password
 	smtpHost := e.Config.SMTP.Host
 
@@ -37,8 +37,8 @@ func (e *EmailSender) SendEmail(to []string, subject, body string) error {
 }
 
 func (e *EmailSender) SendWelcomeEmail(to, name, message string) error {
-	subject := "Welcome Email | Depublic"
-	body := fmt.Sprintf("Dear %s,\nThis is a welcome email message from depublic\n\nDepublic Team", name)
+	subject := "Selamat Datang | Kredit Plus"
+	body := fmt.Sprintf("Dear %s,\nTerima Kasih Telah mendaftarkan Di Kredit Plus\n\nKREDIT PLUS\n'Solusi Pembiayaan Terpercaya Untuk Semua Kebutuhan Anda'", name)
 	return e.SendEmail([]string{to}, subject, body)
 }
 
@@ -54,10 +54,9 @@ func (e *EmailSender) SendVerificationEmail(to, name, code string) error {
 	return e.SendEmail([]string{to}, subject, body)
 }
 
-func (e *EmailSender) SendTransactionInfo(to, Transactions_id, Cart_id, User_id,
-	Fullname_user, Trx_date, Payment, Payment_url, Amount string) error {
-	subject := "Transaction Info | Depublic"
-	body := fmt.Sprintf("Dear %s,\nThis is your transaction info from Depublic:\n\nTransaction ID: %s\n\nCart ID: %s\n\nUser ID: %s\n\nFullname: %s\n\nTransaction Date: %s\n\nPayment Type: %s\n\nURL Payment: %s\n\nTotal Amount: %s\n\n\nDepublic Team ",
-		Fullname_user, Transactions_id, Cart_id, User_id, Fullname_user, Trx_date, Payment, Payment_url, Amount)
+func (e *EmailSender) SendVerifyAccount(to, verifycode string) error {
+	subject := "Verify Your Email | Kredit Plus"
+	body := fmt.Sprintf("Hallo \nTerima Kasih telah mendaftar di Kredit Plus\n\nUntuk mengaktifkan akun anda dan memulai menggunakan fitur kami. Silahkan masukkan kode veritifikasi dibawah ini :\n\nKode : %s\n\nPenting : Tautan ini hanya berlaku selama 5 Menit. Jika Anda tidak meminta verifikasi ini, abaikan email ini.\n\nSalam,\nTim Kredit Plus",
+		verifycode)
 	return e.SendEmail([]string{to}, subject, body)
 }

@@ -25,10 +25,10 @@ func NewServer(serverName string, publicRoutes, privateRoutes []*route.Route, se
 	e := echo.New()
 
 	e.GET("/", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, response.SuccessResponse(http.StatusOK, "Hello, World!", nil))
+		return c.JSON(http.StatusOK, response.SuccessResponse(http.StatusOK, "Success", "Selamat Datang diAplikasi Kredit Plus"))
 	})
 
-	v1 := e.Group(fmt.Sprintf("/%s/api/v1", serverName))
+	v1 := e.Group(fmt.Sprintf("/%s/api/v1/", serverName))
 
 	for _, public := range publicRoutes {
 		v1.Add(public.Method, public.Path, public.Handler)

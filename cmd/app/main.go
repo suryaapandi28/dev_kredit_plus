@@ -38,6 +38,7 @@ func main() {
 
 	// Initialize and run the server
 	srv := server.NewServer("app", publicRoutes, privateRoutes, cfg.JWT.SecretKey)
+
 	srv.Run()
 }
 
