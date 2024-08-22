@@ -33,7 +33,7 @@ func PublicRoutes(konsumenHandler handler.KonsumenHandler, accountHandler handle
 
 }
 
-func PrivateRoutes(konsumenHandler handler.KonsumenHandler) []*route.Route {
+func PrivateRoutes(konsumenHandler handler.KonsumenHandler, transacctionService handler.TransactionHandler) []*route.Route {
 	return []*route.Route{
 		{
 			Method:  http.MethodPost,
@@ -45,6 +45,13 @@ func PrivateRoutes(konsumenHandler handler.KonsumenHandler) []*route.Route {
 			Method:  http.MethodPost,
 			Path:    "Konsumen/CheckLimit",
 			Handler: konsumenHandler.CheckLimitTenor,
+			Roles:   onlyUser,
+		},
+
+		{
+			Method:  http.MethodPost,
+			Path:    "Transaksi/Create",
+			Handler: transacctionService.Createtransaction,
 			Roles:   onlyUser,
 		},
 	}
